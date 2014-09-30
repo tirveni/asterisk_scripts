@@ -101,6 +101,14 @@ my @all_pri_spans	= `asterisk -rnx 'pri show spans' `;
 my $avail_total_pris	= @all_pri_spans; 
 $avail_total_pris	= $avail_total_pris+1;
 
+##Needed if a redfone has been disabled.                                                                                                                     
+my $in_num_redfones =0;
+$in_num_redfones = int($ARGV[0]) if($ARGV[0]);
+#print  "REDFONEx:$in_num_redfones";                                                                                                                         
+
+$avail_total_pris = ($in_num_redfones*4) if(int($in_num_redfones));
+
+
 $| = 1;
 
 #START WHILE
